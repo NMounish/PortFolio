@@ -166,6 +166,7 @@ const Home = () => {
                   aria-label="WhatsApp"
                 >
                   <i className="fab fa-whatsapp"></i>
+                       
                 </a>
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=nachimuthu.mounish@gmail.com"
@@ -211,7 +212,7 @@ const Home = () => {
               alt="Mounish N - Web Developer"
             />
             <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-4">
-              <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 dark:text-white">
+              <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800">
                 MOUNISH N
               </p>
               <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300">
