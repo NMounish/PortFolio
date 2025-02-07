@@ -215,11 +215,11 @@ const Home = () => {
               <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800">
                 MOUNISH N
               </p>
-              <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300">
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-700">
                 WEB DEVELOPER
               </p>
               <div className="w-32 sm:w-64 md:w-72 h-1 bg-blue-700 self-center md:self-end"></div>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600">
                 "Let’s create something extraordinary together—your vision,
                 brought to life with precision and creativity."
               </p>
