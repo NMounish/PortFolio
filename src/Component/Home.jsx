@@ -144,11 +144,11 @@ const Home = () => {
     { name: "HTML", level: 90 },
     { name: "CSS", level: 85 },
     { name: "JavaScript", level: 80 },
+    { name: "TailWindCss", level: 65 },
     { name: "React", level: 75 },
     { name: "Java", level: 85 },
     { name: "Spring Boot", level: 70 },
     { name: "MySQL", level: 75 },
-    { name: "Python", level: 65 },
   ];
 
   return (
