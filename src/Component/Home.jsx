@@ -149,6 +149,8 @@ const Home = () => {
     { name: "Java", level: 85 },
     { name: "Spring Boot", level: 70 },
     { name: "MySQL", level: 75 },
+    { name: "Express.js", level: 50 },
+    { name: "Node.js", level: 60 },
   ];
 
   return (
