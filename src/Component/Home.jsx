@@ -253,12 +253,12 @@ const Home = () => {
         </div>
       </nav>
 
-      <div className="mt-20 md:mt-32 lg:mt-12 px-6 md:px-12 lg:px-24">
+      <div className="mt-20 md:mt-32 lg:mt-48 px-6 md:px-12 lg:px-20">
         {/* Home Section */}
         <div
           id="home"
           ref={setSectionRef("home")}
-          className="flex flex-col md:flex-row items-center justify-between min-h-screen py-20"
+          className="flex flex-col md:flex-row items-center justify-between min-h-screen py-20 -mt-36"
         >
           <img
             className="rounded-full w-60 h-60 sm:w-60 sm:h-60 md:w-80 md:h-80 mb-8 md:mb-0"
