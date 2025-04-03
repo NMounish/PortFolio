@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   callOutline,
   mailOutline,
@@ -28,6 +28,11 @@ const Home = () => {
     email: "",
     message: "",
   });
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+  const [scrolling, setScrolling] = useState(false);
+  const sections = ["home", "about", "skills", "projects", "contact"];
+  const sectionRefs = useRef({});
+  const scrollTimeout = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -35,8 +40,7 @@ const Home = () => {
 
   const scrollToSection = (id) => {
     setActiveSection(id);
-
-    // Get the element by id
+    setScrolling(true);
     const element = document.getElementById(id);
 
     if (element) {
@@ -44,43 +48,79 @@ const Home = () => {
         top: element.offsetTop - 80, // Adjust the offset for navbar height (adjust as needed)
         behavior: "smooth",
       });
-      // Scroll smoothly to the element, adjusting for the navbar height
+      sectionRefs.current[id] = element;
+    
+      // Reset scrolling state after animation completes
+      clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
+        setScrolling(false);
+      }, 1000);
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "contact"];
-      const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
+      if (scrolling) return;
 
-      sections.forEach((id) => {
-        const element = document.getElementById(id);
+      const currentPosition = window.pageYOffset;
+      const scrollDirection = currentPosition > lastScrollPosition ? 'down' : 'up';
+      setLastScrollPosition(currentPosition);
+
+      // Find current section
+      let currentIndex = -1;
+      sections.forEach((section, index) => {
+        const element = sectionRefs.current[section];
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Check if the section is in view
-          if (rect.top >= 0 && rect.top < window.innerHeight - navbarHeight) {
-            setActiveSection(id);
+          if (rect.top <= 80 && rect.bottom >= 80) {
+            currentIndex = index;
           }
         }
       });
+
+      if (currentIndex === -1) return;
+
+      const currentSection = sectionRefs.current[sections[currentIndex]];
+      if (!currentSection) return;
+
+      const rect = currentSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Scroll down detection
+      if (scrollDirection === 'down' && rect.bottom <= windowHeight * 0.7) {
+        if (currentIndex < sections.length - 1) {
+          scrollToSection(sections[currentIndex + 1]);
+        }
+      }
+      // Scroll up detection
+      else if (scrollDirection === 'up' && rect.top >= windowHeight * 0.3) {
+        if (currentIndex > 0) {
+          scrollToSection(sections[currentIndex - 1]);
+        }
+      }
     };
 
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      // Clean up the event listener
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout.current);
     };
-  }, []);
+  }, [lastScrollPosition, scrolling]);
+
+  const setSectionRef = (id) => (el) => {
+    if (el) {
+      sectionRefs.current[id] = el;
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         "service_9zhdfce",
@@ -157,9 +197,8 @@ const Home = () => {
             id="navbar-sticky"
           >
             <ul className="flex flex-col p-4 lg:flex lg:ml-72 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:ml-auto md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              {["home", "about", "skills", "projects", "contact"].map((section) => (
+              {sections.map((section) => (
                 <li key={section}>
-                  
                   <button
                     onClick={() => scrollToSection(section)}
                     className={`block py-2 px-3 text-gray-900 rounded-lg hover:bg-blue-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-2 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ${
@@ -167,8 +206,7 @@ const Home = () => {
                     }`}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </button>
-                  
+                  </button>  
                 </li>
               ))}
               <li className="flex items-center space-x-3">
@@ -215,9 +253,10 @@ const Home = () => {
 
       {/* Sections */}
       <div className="mt-20 md:mt-32 lg:mt-48 px-6 md:px-12 lg:px-20">
-        {activeSection === "home" && (
+        
           <div
             id="home"
+            ref={setSectionRef("home")}
             className="flex flex-col md:flex-row items-center justify-between"
           >
             <img
@@ -239,11 +278,10 @@ const Home = () => {
               </p>
             </div>
           </div>
-        )}
+        
 
-        {activeSection === "about" && (
-          <div id="about" className="text-center">
-            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-4">
+          <div id="about"  ref={setSectionRef("about")} className="text-center mt-96">
+            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8">
               ABOUT ME
             </h2>
             <p className="text-lg leading-relaxed whitespace-normal">
@@ -267,10 +305,8 @@ const Home = () => {
               professionally."{" "}
             </p>
           </div>
-        )}
-
-        {activeSection === "skills" && (
-          <div id="skills" className="py-12">
+        
+          <div id="skills" ref={setSectionRef("skills")} className="py-12 mt-96">
             <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-12 text-center">
               MY SKILLS
             </h2>
@@ -295,10 +331,8 @@ const Home = () => {
               ))}
             </div>
           </div>
-        )}
 
-        {activeSection === "projects" && (
-          <div id="projects" className="text-center">
+          <div id="projects" ref={setSectionRef("projects")}  className="text-center mt-96 ">
             <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-4">
               PROJECTS
             </h2>
@@ -381,9 +415,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-        )}
-        {activeSection === "contact" && (
-          <div id="contact" className="antialiased  flex justify-center -mt-12">
+        
+        
+          <div id="contact" ref={setSectionRef("contact")} className="antialiased  flex justify-center mt-96">
             <div className="flex flex-col md:flex-row bg-cyan-700 w-full max-w-6xl p-8 rounded-xl shadow-lg text-white">
               {/* Contact Info - Left Side */}
               <div className="flex flex-col space-y-6 w-full md:w-1/2">
@@ -497,7 +531,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        )}
+        
       </div>
     </div>
   );
