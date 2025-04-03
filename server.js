@@ -1,16 +1,15 @@
-require("dotenv").config();
-const express = require("express");
-const nodemailer = require("nodemailer");
-const twilio = require("twilio");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import express from "express";
+import { createTransport } from "nodemailer";
+import twilio from "twilio";
+import cors from "cors";
+import { json } from "body-parser";
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(json());
 
 // Nodemailer transporter (for email)
-const transporter = nodemailer.createTransport({
+const transporter = createTransport({
   service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
