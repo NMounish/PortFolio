@@ -15,7 +15,6 @@ import Project1 from "../assets/Projects1.jpg";
 import Project2 from "../assets/Projects2.jpg";
 import Project3 from "../assets/Projects3.jpg";
 import Project4 from "../assets/Projects4.jpg";
-import Project5 from "../assets/Projects5.png";
 import leetcode from "../assets/leetcode.png";
 import hackerrank from "../assets/hackerrank.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,15 +38,11 @@ const Home = () => {
     { name: "Java", level: 85, icon: "fab fa-java" },
     { name: "React", level: 80, icon: "fab fa-react" },
     { name: "JavaScript", level: 75, icon: "fab fa-js" },
-    { name: "HTML", level: 90, icon: "fab fa-html5" },
-    { name: "CSS", level: 90, icon: "fab fa-html5" },
+    { name: "HTML/CSS", level: 90, icon: "fab fa-html5" },
     { name: "Spring Boot", level: 70, icon: "fas fa-leaf" },
-    { name: "TailWindCss", level: 65, icon: "fab fa-python" },
     { name: "MySQL", level: 75, icon: "fas fa-database" },
     { name: "Git", level: 80, icon: "fab fa-git-alt" },
-    { name: "Node.js", level: 65, icon: "fab fa-python" },
-
-
+    { name: "Python", level: 65, icon: "fab fa-python" },
   ];
 
   const toggleMenu = () => {
@@ -255,48 +250,41 @@ const Home = () => {
 
       <div className="mt-20 md:mt-32 lg:mt-48 px-6 md:px-12 lg:px-20">
         {/* Home Section */}
-        {/* Home Section */}
-<div
-  id="home"
-  ref={setSectionRef("home")}
-  className="flex flex-col md:flex-row items-center justify-between min-h-screen py-12 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20"
->
-  {/* Image - Centered on mobile, normal on larger screens */}
-  <div className="flex justify-center w-full md:w-auto mb-8 md:mb-0">
-    <img
-      className="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80"
-      src={MounishImage}
-      alt="Mounish N - Web Developer"
-    />
-  </div>
-  
-  {/* Text content - Adjusted spacing for mobile */}
-  <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-3 md:space-y-4 w-full md:w-auto">
-    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-slate-800 dark:text-white">
-      MOUNISH N
-    </p>
-    <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300">
-      WEB DEVELOPER
-    </p>
-    <div className="w-24 sm:w-32 md:w-48 h-1 bg-blue-700"></div>
-    <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-md">
-      "Let's create something extraordinary together—your vision,
-      brought to life with precision and creativity."
-    </p>
-  </div>
-</div>
-        
+        <div
+          id="home"
+          ref={setSectionRef("home")}
+          className="flex flex-col md:flex-row items-center justify-between min-h-screen py-20"
+        >
+          <img
+            className="rounded-full w-60 h-60 sm:w-60 sm:h-60 md:w-80 md:h-80 mb-8 md:mb-0"
+            src={MounishImage}
+            alt="Mounish N - Web Developer"
+          />
+          <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-4">
+            <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 dark:text-white">
+              MOUNISH N
+            </p>
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300">
+              WEB DEVELOPER
+            </p>
+            <div className="w-32 sm:w-64 md:w-72 h-1 bg-blue-700 self-center md:self-end"></div>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">
+              "Let's create something extraordinary together—your vision,
+              brought to life with precision and creativity."
+            </p>
+          </div>
+        </div>
 
         {/* About Section */}
         <div
           id="about"
           ref={setSectionRef("about")}
-          className="text-center min-h-screen py-28 flex flex-col justify-center -mt-36"
+          className="text-center min-h-screen py-20 flex flex-col justify-center"
         >
-          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8">
+          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-12">
             ABOUT ME
           </h2>
-          <p className="text-lg leading-relaxed whitespace-normal max-w-4xl mx-auto mb-24">
+          <p className="text-lg leading-relaxed whitespace-normal max-w-4xl mx-auto">
             "Hi, I'm Mounish, and I'm from Erode. I completed my schooling at
             Kongu National Matric Hr. Sec. School. Currently, I am pursuing a
             BE degree in Computer Science at Kongu Engineering College. As a
@@ -322,9 +310,9 @@ const Home = () => {
         <div
           id="skills"
           ref={setSectionRef("skills")}
-          className="py-20 min-h-screen flex flex-col justify-center -mt-20"
+          className="py-20 min-h-screen flex flex-col justify-center"
         >
-          <h2 className="text-3xl font-bold text-center text-slate-800 dark:text-white -mt-16">
+          <h2 className="text-3xl font-bold text-center text-slate-800 dark:text-white mb-12">
             MY SKILLS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -375,9 +363,9 @@ const Home = () => {
         <div
           id="projects"
           ref={setSectionRef("projects")}
-          className="text-center min-h-screen py-20 flex flex-col justify-center -mt-10"
+          className="text-center min-h-screen py-20 flex flex-col justify-center"
         >
-          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-16">
+          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-12">
             PROJECTS
           </h2>
           <div className="overflow-auto flex flex-col gap-8 p-4 scroll-smooth sm:flex-col lg:flex-row">
@@ -449,24 +437,6 @@ const Home = () => {
                 <p className="text-lg font-medium">Mouse Trail Effect</p>
                 <a
                   href="https://github.com/NMounish/Mouse-Trail-Effect.git"
-                  className="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  VIEW
-                </a>
-              </div>
-            </div>
-            <div className="snap-center flex-shrink-0">
-              <img
-                src={Project5}
-                className="sm:w-full md:w-96 mx-auto h-auto rounded-lg shadow-lg"
-                alt="Project 4"
-              />
-              <div className="mt-4 text-center">
-                <p className="text-lg font-medium">Crowd Funding</p>
-                <a
-                  href="https://github.com/NMounish/CrowdFunding.git"
                   className="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
