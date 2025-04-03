@@ -248,19 +248,21 @@ const Home = () => {
         </div>
       </nav>
 
-      <div className="mt-20 md:mt-32 lg:mt-48 px-6 md:px-12 lg:px-20">
+      <div className="mt-20 md:mt-32 lg:mt-16 px-6 md:px-12 lg:px-20">
         {/* Home Section */}
         <div
   id="home"
   ref={setSectionRef("home")}
-  className="flex flex-col md:flex-row items-center justify-between min-h-screen py-12 md:py-20"
+  className="flex flex-col md:flex-row items-center justify-between min-h-screen py-32 md:py-20"
 >
-  <img
-    className="rounded-full w-48 h-48 sm:w-60 sm:h-60 md:w-80 md:h-80 mb-4 sm:mb-8 md:mb-0"
-    src={MounishImage}
-    alt="Mounish N - Web Developer"
-  />
-  <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-2 sm:space-y-4 -mt-4 sm:mt-0">
+  <div className="-mt-8 md:mt-0"> {/* Negative margin container for mobile */}
+    <img
+      className="rounded-full w-48 h-48 sm:w-60 sm:h-60 md:w-80 md:h-80 mb-4 sm:mb-8 md:mb-0"
+      src={MounishImage}
+      alt="Mounish N - Web Developer"
+    />
+  </div>
+  <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-2 sm:space-y-4 -mt-10 sm:mt-0">
     <p className="text-2xl sm:text-4xl md:text-6xl font-bold text-slate-800 dark:text-white">
       MOUNISH N
     </p>
@@ -273,7 +275,7 @@ const Home = () => {
       brought to life with precision and creativity."
     </p>
   </div>
-</div>
+</div> 
 
         {/* About Section */}
         <div
