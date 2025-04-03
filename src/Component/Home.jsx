@@ -262,7 +262,7 @@ const Home = () => {
       alt="Mounish N - Web Developer"
     />
   </div>
-  <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-2 sm:space-y-4 -mt-4 sm:mt-0">
+  <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-2 sm:space-y-4 sm:mt-0">
     <p className="text-2xl sm:text-4xl md:text-6xl font-bold text-slate-800 dark:text-white">
       MOUNISH N
     </p>
