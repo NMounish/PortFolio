@@ -251,29 +251,29 @@ const Home = () => {
       <div className="mt-20 md:mt-32 lg:mt-48 px-6 md:px-12 lg:px-20">
         {/* Home Section */}
         <div
-          id="home"
-          ref={setSectionRef("home")}
-          className="flex flex-col md:flex-row items-center justify-between min-h-screen py-20"
-        >
-          <img
-            className="rounded-full w-60 h-60 sm:w-60 sm:h-60 md:w-80 md:h-80 mb-8 md:mb-0"
-            src={MounishImage}
-            alt="Mounish N - Web Developer"
-          />
-          <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-4">
-            <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 dark:text-white">
-              MOUNISH N
-            </p>
-            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300">
-              WEB DEVELOPER
-            </p>
-            <div className="w-32 sm:w-64 md:w-72 h-1 bg-blue-700 self-center md:self-end"></div>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">
-              "Let's create something extraordinary together—your vision,
-              brought to life with precision and creativity."
-            </p>
-          </div>
-        </div>
+  id="home"
+  ref={setSectionRef("home")}
+  className="flex flex-col md:flex-row items-center justify-between min-h-screen py-12 md:py-20"
+>
+  <img
+    className="rounded-full w-48 h-48 sm:w-60 sm:h-60 md:w-80 md:h-80 mb-4 sm:mb-8 md:mb-0"
+    src={MounishImage}
+    alt="Mounish N - Web Developer"
+  />
+  <div className="flex flex-col md:items-end md:ml-24 text-center md:text-right space-y-2 sm:space-y-4 -mt-4 sm:mt-0">
+    <p className="text-2xl sm:text-4xl md:text-6xl font-bold text-slate-800 dark:text-white">
+      MOUNISH N
+    </p>
+    <p className="text-lg sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300">
+      WEB DEVELOPER
+    </p>
+    <div className="w-24 sm:w-64 md:w-72 h-1 bg-blue-700 self-center md:self-end"></div>
+    <p className="text-xs sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 px-4 sm:px-0">
+      "Let's create something extraordinary together—your vision,
+      brought to life with precision and creativity."
+    </p>
+  </div>
+</div>
 
         {/* About Section */}
         <div
