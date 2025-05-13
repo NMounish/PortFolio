@@ -157,7 +157,7 @@ const Home = () => {
     <div>
       <nav className="bg-white  fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-xl font-semibold whitespace-nowrap">
             PORTFOLIO
           </span>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ml-auto">
@@ -317,14 +317,14 @@ const Home = () => {
               {skills.map((skill, index) => (
                 <div key={index} className="bg-white  p-6 rounded-lg shadow-lg">
                   <div className="flex justify-between mb-2">
-                    <span className="text-lg font-medium text-gray-800 dark:text-white">
+                    <span className="text-lg font-medium text-gray-800 ">
                       {skill.name}
                     </span>
-                    <span className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                    <span className="text-lg font-medium text-blue-600">
                       {skill.level}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
+                  <div className="w-full bg-gray-200  rounded-full h-4">
                     <div
                       className="bg-blue-600 h-4 rounded-full"
                       style={{ width: `${skill.level}%` }}
@@ -336,7 +336,7 @@ const Home = () => {
           </div>
 
           <div id="projects" ref={setSectionRef("projects")}  className="text-center mt-96 ">
-            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">
               PROJECTS
             </h2>
             <div className="overflow-auto flex flex-col gap-8 p-4 scroll-smooth sm:flex-col lg:flex-row">
