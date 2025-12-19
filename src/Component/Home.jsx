@@ -206,7 +206,7 @@ const Home = () => {
                   <button
                     onClick={() => scrollToSection(section)}
                     className={`block py-2 px-3 text-gray-900 rounded-lg hover:bg-blue-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-2${
-                      activeSection === section ? "bg-blue-700 text-white" : ""
+                      activeSection === section ? "bg-blue-700" : ""
                     }`}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
