@@ -147,6 +147,7 @@ const Home = () => {
     { name: "TailWindCss", level: 65 },
     { name: "React", level: 75 },
     { name: "Java", level: 85 },
+    { name: "Python", level: 80 },
     { name: "Spring Boot", level: 70 },
     { name: "MySQL", level: 75 },
     { name: "Express.js", level: 50 },
